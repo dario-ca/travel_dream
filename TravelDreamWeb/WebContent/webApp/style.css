@@ -1,0 +1,153 @@
+@font-face {
+    font-family: 'Basic'; 
+    src: url('PrintClearly.ttf'); 
+}
+
+body
+{
+	margin: 0;
+	font-family:  Arial;
+	background: #E8E8E8 url(img/bg.jpg) repeat;
+	color: black;
+	font-size: 10pt;
+}
+
+#headerContainer
+{
+	border-bottom: 0px #C0C0C0 solid;
+	background-color: #008000;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#headerContainer a:link
+{
+  	text-decoration: none;
+  		font-family:  Basic;
+    	color: #ffffff;
+    	font-size: 14pt;
+}
+
+#headerContainer a:visited
+{
+    	text-decoration: none;
+    	font-family:  Basic;
+    	color: #ffffff;
+    	font-size: 14pt;
+}
+
+#headerContainer a:active
+{
+    	text-decoration: underline;
+    	font-family:  Basic;
+    	color: #ffffff;
+    	font-size: 14pt;
+}
+
+#headerContainer a:hover
+{
+    	text-decoration: none;
+    	font-family:  Basic;
+    	color: #C0C0C0;
+    	font-size: 14pt;
+}
+
+#h-menu{
+    	width: 100%;
+    	overflow: hidden;
+    	margin: 0;
+    	padding: 0px;
+}
+
+#h-menu li{
+    	margin-right:15px;
+    	display: inline;
+}
+
+#headerContainer ul{
+	margin-top:10px;
+}
+
+#sharedPackageResearchContainer{
+	border: 1px #C0C0C0 solid;
+	margin: 0 auto;
+	padding: 10px;
+	width: 800px;
+	background-color: #ffffff;
+	border-radius: 5px
+}
+
+#container{
+	border: 1px #C0C0C0 solid;
+	margin: 0 auto;
+	padding: 10px;
+	width: 800px;
+	background-color: #ffffff;
+	border-radius: 5px
+}
+
+#bodyContainer{
+	margin: 0 auto;
+	padding: 0px;
+	width: 850px;
+	border: 0px white solid;
+	background-color: #ffffff;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+#researchBar{
+	margin: 0 auto;
+	padding: 10px;
+	width: 800px;
+	border: 1px #C0C0C0 solid;
+	background-color: #ffffff;
+	border-radius: 5px;
+}
+
+#footerContainer{
+	margin: 0 auto;
+	padding: 10px;
+	width: 800px;
+	border: 0px white solid;
+	color: gray;
+	font-size: 8pt;
+}
+
+#title{
+	font-family:  Basic;
+	font-size: 14pt;
+	}
+
+#field{
+	font-family:  Basic;
+	font-size: 14pt;
+}
+
+#titlehr{
+	height:1px;
+	border-width:0;
+	color:#C0C0C0;
+	background-color:#C0C0C0;
+}
+
+table.employeeTable
+{
+	width: 100%;
+}
+
+table.userTable
+{
+	width: 100%;
+}
+
+#error
+{
+	color: red;
+}
+
+.full-width
+{
+ width: 80%;
+ height:200px
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+		<title> TravelDream - Personalizzazione pacchetto </title>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="./headerUtenteLoggato.xhtml" />
+		<div id='bodyContainer'>
+			<br />
+			<div id='container'><span id='title'>Pacchetto</span><hr id="titlehr"/><br/>
+				<h:form>
+					<span id="field">Nome</span><br/>
+					<h:outputText id="name" value="#{userPackageManager.name}" /><br/>
+					<span id="field">Nazione</span><br/>
+					<h:outputText id="country" value="#{userPackageManager.country}" /><br/>
+					<span id="field">Citta</span><br/>
+					<h:outputText id="city" value="#{userPackageManager.city}" /><br/>
+					<span id="field">Descrizione</span><br/>
+					<h:outputText id="description" value="#{userPackageManager.description}" /><br/>
+					<span id="field">Prezzo</span><br/>
+					<h:outputText  id="price" value="#{userPackageManager.price}">
+					      <f:convertNumber pattern="#,##0.00;(#,##0.00)" />
+					</h:outputText><br/>
+					<br/>
+					<span id="field">Mezzi di Trasporto</span><br/>
+					<p:selectManyMenu id="scrollTransportations" value="#{userPackageManager.selectedPersonalizedTransportations}" required="true" style="width:350px" showCheckbox="true"> 
+								<f:selectItems value="#{userPackageManager.transportationOptions}" var="t" itemLabel="#{t.name} - #{t.notes} - #{t.price}Euro" itemValue="#{t.id}" />  
+      				</p:selectManyMenu>
+      				<span id="error">#{userPackageManager.errorTransportations}</span>
+					<br/>
+					<br/>
+					<span id="field">Albergo</span><br/>
+					<p:selectOneMenu value="#{userPackageManager.selectedPersonalizedAccommodations}" required="true" style="width:350px">  
+								<f:selectItems value="#{userPackageManager.accommodationOptions}" var="a" itemLabel="#{a.name} - #{a.price}Euro" itemValue="#{a.id}" />  
+      				</p:selectOneMenu>        				
+					<br/>
+					<br/>
+					<span id="field">Escursioni</span><br/>
+					<p:selectManyMenu id="scrollTrips" value="#{userPackageManager.selectedPersonalizedTrips}" required="true" style="width:350px" showCheckbox="true">  
+								<f:selectItems value="#{userPackageManager.tripOptions}" var="tr" itemLabel="#{tr.name} - #{tr.price}Euro" itemValue="#{tr.id}" />  
+      				</p:selectManyMenu>
+      				<br />
+					<h:commandButton action="#{userPackageManager.personalize()}" value="Salva In WishList" />
+				</h:form>
+			</div>
+			<br />
+		</div>		
+		<ui:include src="../webApp/footer.xhtml" />
+	</div>
+</h:body>
+</html>

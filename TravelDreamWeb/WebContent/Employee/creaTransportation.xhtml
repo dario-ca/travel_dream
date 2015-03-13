@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+		<title> TravelDream - Gestione prodotti base: Crea mezzo di trasporto</title>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="../webApp/headerImpiegato.xhtml" />
+		<div id='bodyContainer'>
+			<br />
+			<div id='container'>
+			<span id='title'>Mezzo di trasporto</span><hr id="titlehr"/>
+				<h:form>
+				<h:panelGrid columns="3" id="regGrid">
+					Nome
+					<p:inputText id="name" value="#{transportationManager.name}" />
+					<p:message errorStyle="color:red" for="name" />
+					Data di partenza
+
+					<p:calendar value="#{transportationManager.departureDate}" id="departureDate" pattern="dd/MM/yyyy HH:mm"/>
+					<p:message errorStyle="color:red" for="departureDate" />
+
+					Data di arrivo 
+					<p:calendar value="#{transportationManager.arrivalDate}" id="arrivalDate" pattern="dd/MM/yyyy HH:mm"/>
+					<p:message errorStyle="color:red" for="arrivalDate" />
+
+					Note
+					<p:inputText  id="notes" value="#{transportationManager.notes}"/>
+					<p:message errorStyle="color:red" for="notes" />
+
+					Prezzo xx,xx
+					<p:inputText  id="price" value="#{transportationManager.price}">
+										      <f:convertNumber pattern="#,##0.00;(#,##0.00)" />
+					</p:inputText>
+					<p:message errorStyle="color:red" for="price" />
+					Status
+					<p:selectOneRadio id="status" value="#{transportationManager.status}">
+          		  		<f:selectItem itemLabel="Disponibile" itemValue="true" default="true"/>
+          		  		<f:selectItem itemLabel="Non disponibile" itemValue="false" />
+     	 	    	</p:selectOneRadio>
+					<p:commandButton action="#{transportationManager.create()}" value="Salva" />
+				</h:panelGrid>
+				</h:form>
+			</div>
+			<br />
+		</div>		
+		<ui:include src="../webApp/footer.xhtml" />
+	</div>
+</h:body>
+</html>

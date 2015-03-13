@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+		<title> Acquisto Pacchetto </title>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+		<f:facet name="last">
+        	<h:outputStylesheet library="css" name="style.css"/>
+    	</f:facet>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="./headerUtenteLoggato.xhtml" />
+		<div id='bodyContainer'>
+			<br />
+			<br />
+			<center>
+				<div id='container'><span id='title'>ACQUISTO DEL PACCHETTO</span><br/>
+					Compila tutti i campi e procedi con l'acquisto.
+				</div>
+			</center>
+				<br />
+				<br />
+				<h:form>
+					<div id='sharedPackageResearchContainer' align='center'>
+						<h:panelGrid columns="3" id="regGrid">
+							<div>Email</div><p:outputLabel id="email" value="#{purchaseBean.getCurrentUserName()}"/><p:message errorStyle="color:red" for="email" />
+							<div>Numero Partecipanti</div><p:inputText id="people" value="#{purchaseBean.packageToBuy.people}"/><p:message errorStyle="color:red" for="people" />							
+							<div>Nome</div><p:inputText id="name" value="#{purchaseBean.buyerUser.name}"/><p:message errorStyle="color:red" for="name" />
+							<div>Cognome</div><p:inputText id="surname" value="#{purchaseBean.buyerUser.surname}"/><p:message errorStyle="color:red" for="surname" />
+							<div>Codice Carta</div><p:inputText id="cardCode" required="true"/><p:message errorStyle="color:red" for="cardCode" />
+							<div>Indirizzo</div><p:inputText id="address" value="#{purchaseBean.buyerUser.address}"/><p:message errorStyle="color:red" for="address" />
+							<div>Numero di telefono</div><p:inputText id ="phone" value="#{purchaseBean.buyerUser.phone}"/><p:message errorStyle="color:red" for="phone" />
+						</h:panelGrid>
+						<br />
+						<h:commandButton value="Acquista" action="#{purchaseBean.buy}"/>
+					</div>
+				</h:form>
+				<br />
+		</div>		
+		<ui:include src="../webApp/footer.xhtml" />
+	</div>
+</h:body>
+</html>

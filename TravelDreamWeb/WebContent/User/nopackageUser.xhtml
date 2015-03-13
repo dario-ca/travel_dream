@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+		<title> Pacchetto non trovato </title>
+		<link href="./webApp/style.css" rel="stylesheet" type="text/css" > </link>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+		<f:facet name="last">
+        	<h:outputStylesheet library="css" name="style.css"/>
+    	</f:facet>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="./headerUtenteLoggato.xhtml" />
+		<div id='bodyContainer'>
+			<br />
+			<br />
+			<center>
+				<h:form>
+					<div id='container'><span id='title'>PACCHETTO NON TROVATO:</span><br/>
+					Il pacchetto non esiste.
+					<br />
+						<h:commandButton value="Home" action="./index.xhtml" />
+					</div>
+				</h:form>
+			</center>
+				<br />
+		</div>		
+		<ui:include src="../webApp/footer.xhtml" />
+	</div>
+</h:body>
+</html>

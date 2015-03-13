@@ -1,0 +1,18 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui"
+	
+>
+
+<div id='sharedPackageResearchContainer' align='center'>
+			<h:form>
+			<div><span id="field">Inserisci il codice del pacchetto condiviso </span><p:inputText id="sharedCode" value="#{userPackageManager.idShared}"/><h:commandButton action="#{userPackageManager.viewSharedPackageUser}" value="Cerca"/><p:message errorStyle="color:red" for="sharedCode" />
+			</div>
+			</h:form>
+
+</div>
+
+</ui:composition>

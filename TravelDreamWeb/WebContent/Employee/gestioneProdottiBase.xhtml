@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+		<title> TravelDream - Gestione prodotti base</title>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="../webApp/headerImpiegato.xhtml" />
+		<div id='bodyContainer'>
+			<br />
+			<div id='container'><span id='title'>Alloggi</span> <h:form style="display: inline"><h:commandButton action="#{accommodationManager.createPage()}" value="nuovo"/></h:form>
+				<hr id="titlehr"/>
+
+				<h:dataTable value="#{accommodationManager.accommodations}" var="a" class='employeeTable'>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.name}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.price} euro
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+					      <h:outputText value="#{a.checkInDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+							</h:outputText>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      					      <h:outputText value="#{a.checkOutDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+							</h:outputText>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.rating} stelle
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.address}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.explicitStatus}
+				   </h:column>
+				   <h:column>    				
+				      <h:form>
+				      	<h:commandButton action="#{accommodationManager.editAccommodation(a.id)}" value="modifica"/>
+				      </h:form>
+				   </h:column>
+				</h:dataTable>
+
+			</div>
+			<br />
+			<div id='container'><span id='title'>Mezzi di trasporto</span><h:form style="display: inline"><h:commandButton action="#{transportationManager.createPage()}" value="nuovo"/></h:form>
+				<hr id="titlehr"/>
+
+				<h:dataTable value="#{transportationManager.transportations}" var="t" class='employeeTable'>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{t.name}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{t.price} euro
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+					      <h:outputText value="#{t.departureDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy HH:mm"/>
+							</h:outputText>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      					      <h:outputText value="#{t.arrivalDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy HH:mm"/>
+							</h:outputText>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{t.notes} 
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{t.explicitStatus}
+				   </h:column>
+				    <h:column>    				
+				      <h:form>
+				      	<h:commandButton action="#{transportationManager.editTransportation(t.id)}" value="modifica"/>
+				      </h:form>
+				   </h:column>
+				</h:dataTable>
+
+			</div>
+			<br />
+				<div id='container'><span id='title'>Escursioni</span> <h:form style="display: inline"><h:commandButton action="#{tripManager.createPage()}" value="nuovo"/></h:form>
+				
+					<hr id="titlehr"/>
+
+				<h:dataTable value="#{tripManager.trips}" var="trip" class='employeeTable'>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.name}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.price} euro
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+					      <h:outputText value="#{trip.tripDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy HH:mm"/>
+							</h:outputText>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.description} 
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.explicitStatus}
+				   </h:column>
+				    <h:column>    				
+				      <h:form>
+				      	<h:commandButton action="#{tripManager.editTrip(trip.id)}" value="modifica"/>
+				      </h:form>
+				   </h:column>
+				</h:dataTable>
+
+			</div>
+			<br />
+		</div>		
+		<ui:include src="../webApp/footer.xhtml" />
+	</div>
+</h:body>
+</html>

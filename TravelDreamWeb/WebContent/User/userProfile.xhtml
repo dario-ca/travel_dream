@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+		<title> Aggiornamento Profilo Utente </title>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+		<f:facet name="last">
+        	<h:outputStylesheet library="css" name="style.css"/>
+    	</f:facet>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="./headerUtenteLoggato.xhtml" />
+		<div id='bodyContainer'>
+			<br />
+			<br />
+			<center>
+				<div id='container'><span id='title'>AGGIORNAMENTO PROFILO</span><br/>
+					Compila tutti i campi e aggiorna il tuo profilo.
+				</div>
+			</center>
+				<br />
+				<br />
+				<h:form>
+					<div id='sharedPackageResearchContainer' align='center'>
+						<h:panelGrid columns="3" id="regGrid">
+							<div>Email</div><p:outputLabel id="email" value="#{registrationBean.getCurrentUserName()}"/><p:message errorStyle="color:red" for="email" />
+							<div>Nome</div><p:inputText id="name" value="#{registrationBean.user.name}"/><p:message errorStyle="color:red" for="name" />
+							<div>Cognome</div><p:inputText id="surname" value="#{registrationBean.user.surname}"/><p:message errorStyle="color:red" for="surname" />
+							<div>Password</div><p:password redisplay="false" id="password" value="#{registrationBean.user.password}" feedback="true" match="pwd2" label="Password" /><p:message errorStyle="color:red" for="password" />
+							<div>Conferma Password</div><p:password redisplay="false" id="pwd2" value="#{registrationBean.user.password}" /><p:message errorStyle="color:red" for="password"/>
+							<div>Indirizzo</div><p:inputText id="address" value="#{registrationBean.user.address}"/><p:message errorStyle="color:red" for="address" />
+							<div>Numero di telefono</div><p:inputText id ="phone" value="#{registrationBean.user.phone}"/><p:message errorStyle="color:red" for="phone" />
+						</h:panelGrid>
+						<br />
+						<h:commandButton value="Aggiorna" action="#{registrationBean.update()}"/>
+					</div>
+				</h:form>
+				<br />
+		</div>		
+		<ui:include src="../webApp/footer.xhtml" />
+	</div>
+</h:body>
+</html>

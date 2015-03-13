@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<title> TravelDream - Gestione prodotti base: Crea escursione</title>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="../webApp/headerImpiegato.xhtml" />
+		<div id='bodyContainer'>
+			<br />
+			<div id='container'>
+			<span id='title'>Escursione</span><hr id="titlehr"/>
+				<h:form>
+				<h:panelGrid columns="3" id="regGrid">
+					Nome
+					<p:inputText id="name" value="#{tripManager.name}" />
+					<p:message errorStyle="color:red" for="name" />
+					Data
+					<p:calendar value="#{tripManager.tripDate}" id="tripDate" pattern="dd/MM/yyyy HH:mm"/>
+					<p:message errorStyle="color:red" for="tripDate" />
+					Descrizione
+					<p:inputText id="description" value="#{tripManager.description}" />
+					<p:message errorStyle="color:red" for="description" />
+					
+					Prezzo xx,xx
+					<p:inputText  id="price" value="#{tripManager.price}">					      <f:convertNumber pattern="#,##0.00;(#,##0.00)" />
+					</p:inputText>
+					<p:message errorStyle="color:red" for="price" />
+					Status
+				<p:selectOneRadio id="status" value="#{tripManager.status}">
+          		  <f:selectItem itemLabel="Disponibile" itemValue="true" default="true"/>
+          		  <f:selectItem itemLabel="Non disponibile" itemValue="false" />
+     	 	    </p:selectOneRadio>
+					<p:commandButton action="#{tripManager.create()}" value="Salva" />
+					</h:panelGrid>
+				</h:form>
+			</div>
+			<br />
+		</div>		
+		<ui:include src="../webApp/footer.xhtml" />
+	</div>
+</h:body>
+</html>

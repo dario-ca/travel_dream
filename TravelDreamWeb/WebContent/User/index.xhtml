@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+		<title> TravelDream </title>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="./headerUtenteLoggato.xhtml" />
+		<div id='bodyContainer'>
+			
+			<br />
+			<div id='container'><span id='title'><center>BENVENUTO NELLA HOMEPAGE DELL'UTENTE!</center></span><br/>
+				<center>Il portale offre numerosi pacchetti..!!</center>
+			</div>
+			<br />
+			
+			<br />
+			<div id="container">
+				<span id='title'>Ricerca</span><hr id="titlehr"/>
+				<h:form>
+				<h:selectOneMenu value="#{userPackageManager.countryOfResearch}">
+					<f:selectItems value="#{userPackageManager.countries}" />
+				</h:selectOneMenu>
+				<h:selectOneMenu value="#{userPackageManager.cityOfResearch}">
+					<f:selectItems value="#{userPackageManager.cities}" />
+				</h:selectOneMenu><h:commandButton value="cerca" action="#{userPackageManager.searchPackage}"/>
+				<br/>
+				</h:form>
+			</div>
+			<br />
+			
+						<br />
+			<div id='container'><span id='title'>Pacchetti</span> <h:form style="display: inline"></h:form>
+				<hr id="titlehr"/>
+			<br />
+			
+			<h:dataTable value="#{userPackageManager.packages}" var="a" class='userTable'>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      <span id="field">Nome: </span>#{a.name}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      <span id="field">Nazione: </span>#{a.country}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      <span id="field">Citta: </span>#{a.city}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      <span id="field">Prezzo: </span>#{a.price} <span id="field">Euro</span>
+				   </h:column>
+
+				   <h:column>    				
+				   	<h:form>
+				      <h:commandButton action="#{userPackageManager.viewPackage(a.idPackageTd)}" value="Visualizza"/>
+				      </h:form>
+				   </h:column>
+				   <h:column>
+				   <h:form>
+				      <h:commandButton action="#{purchaseBean.finalPaymentStep(a.idPackageTd)}" value="Acquista"/>
+				      </h:form>
+				   </h:column>
+					<h:column> 
+					<h:form>   				
+				      <h:commandButton action="#{userPackageManager.editPackage(a.idPackageTd)}" value="Personalizza"/>
+				      </h:form>
+				   </h:column> 
+				</h:dataTable>	
+				
+
+			<br />
+			</div>
+			<br />
+			<ui:include src="./sharedUserBox.xhtml" />
+			<br/>
+		</div>		
+		<ui:include src="../webApp/footer.xhtml" />
+	</div>
+</h:body>
+</html>

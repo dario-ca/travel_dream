@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+		<title> TravelDream </title>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="../webApp/headerImpiegato.xhtml" />
+		<div id='bodyContainer'>
+			<br />
+			<div id="container">
+				<span id='title'>Ricerca</span><hr id="titlehr"/>
+				<h:form>
+				<h:selectOneMenu value="#{packageManager.countryOfResearch}">
+					<f:selectItems value="#{packageManager.countries}" />
+				</h:selectOneMenu>
+				<h:selectOneMenu value="#{packageManager.cityOfResearch}">
+					<f:selectItems value="#{packageManager.cities}" />
+				</h:selectOneMenu>
+				Id<h:inputText id="idOfResearch" value="#{packageManager.idOfResearch}" ></h:inputText>
+				<br/>
+				<h:message for="idOfResearch"></h:message>
+				<span id="error">#{packageManager.errorMessagePackageNotFound}</span>
+				<br/>
+				<h:commandButton value="cerca" action="#{packageManager.searchPackage}"/>
+				</h:form>
+			</div>
+			<br />
+			<div id='container'>
+					<span id='title'>Pacchetti</span>
+				<hr id="titlehr"/>
+				<br/>
+				<h:dataTable value="#{packageManager.packages}" var="p" class='employeeTable'>
+					<h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{p.idPackageTd}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{p.name}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{p.country}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{p.city}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{p.price}€
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{p.explicitOnOffer}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{p.explicitStatus}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				     vendite #{packageManager.getStat(p.idPackageTd)}
+				   </h:column>
+				   <h:column>    				
+				   	<h:form>
+				      <h:commandButton action="#{packageManager.viewPackage(p.idPackageTd)}" value="visualizza"/>
+				      </h:form>
+				   </h:column>
+					<h:column> 
+					<h:form>   				
+				      <h:commandButton action="#{packageManager.editPackage(p.idPackageTd)}" value="modifica"/>
+				      </h:form>
+				   </h:column>
+				</h:dataTable>
+			</div>
+			<br />
+		</div>		
+		<ui:include src="../webApp/footer.xhtml" />
+	</div>
+</h:body>
+</html>

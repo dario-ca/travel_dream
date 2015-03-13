@@ -1,0 +1,25 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+<div id='headerContainer'>
+	<center>
+		<img src='../webApp/img/logoPiccolo.png'></img>
+		<br></br>
+	  	<ul id="h-menu">
+			<li><a href='./index.xhtml'>Home</a></li>
+<!-- 			<li><a href='./userProfile.xhtml'>Profilo</a></li> -->
+			
+			<li><h:form style="display: inline"><h:commandLink action="#{registrationBean.updateProfile()}" value="Profilo" /></h:form></li>
+			<li><a href='./WishList.xhtml'>WishList</a></li>
+			<li><a href='./Storico.xhtml'>Storico</a></li>
+<!-- 			<li><a href='#'>Logout</a></li>-->
+
+			<li><h:form style="display: inline"><h:commandLink action="#{loginManager.logout()}" value="Logout" /></h:form></li>
+		</ul>
+	</center>
+</div>
+
+</ui:composition>

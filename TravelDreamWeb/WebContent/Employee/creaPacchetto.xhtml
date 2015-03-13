@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<title> TravelDream - Crea pacchetto </title>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="../webApp/headerImpiegato.xhtml" />
+		<div id='bodyContainer'>
+			<br />
+			<div id='container'><span id='title'>Pacchetto</span><hr id="titlehr"/><br/>
+			<div align="center">
+				<h:form>
+				<table border="0" width="100%">
+				<tr>
+					<td>
+						Nome pacchetto
+					</td>
+					<td><p:inputText id="name" value="#{packageManager.name}" /><br/>
+					<p:message errorStyle="color:red" for="name" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Nazione
+					</td>
+					<td>
+					<p:inputText id="country" value="#{packageManager.country}" /><br/>
+					<p:message errorStyle="color:red" for="country" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Citta
+					</td>
+					<td>
+					<p:inputText id="city" value="#{packageManager.city}" /><br/>
+					<p:message errorStyle="color:red" for="city" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Prezzo
+					</td>
+					<td>
+					<p:inputText  id="price" value="#{packageManager.price}"><br/>
+					      <f:convertNumber pattern="#,##0.00;(#,##0.00)" />
+					</p:inputText>
+					<p:message errorStyle="color:red" for="price" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Description
+					</td>
+					<td>
+					<p:inputTextarea id="description" value="#{packageManager.description}" /><br/>
+					<p:message errorStyle="color:red" for="description" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+					In offerta
+					</td>
+					<td>
+					<p:selectOneRadio id="onOffer" value="#{packageManager.onOffer}">
+          		  		<f:selectItem itemLabel="Si" itemValue="true" default="true"/>
+          		  		<f:selectItem itemLabel="No" itemValue="false" />
+     	 	    	</p:selectOneRadio><br />
+     	 	    	<p:message errorStyle="color:red" for="onOffer" />
+     	 	    	</td>
+				</tr>
+     	 	    <tr>
+					<td>
+					Status
+					</td>
+					<td>
+					<p:selectOneRadio id="status" value="#{packageManager.status}">
+          		  		<f:selectItem itemLabel="Disponibile" itemValue="true" default="true"/>
+          		  		<f:selectItem itemLabel="Non disponibile" itemValue="false" />
+   	 	    		</p:selectOneRadio><br />
+     	 	    	<p:message errorStyle="color:red" for="status" />
+     	 	    	</td>
+     	 	    </tr>
+				<tr>
+					<td><br/>
+					Mezzi di trasporto (opzioni)<br/><br/><br/>
+					<p:selectManyMenu id="transportations" value="#{packageManager.selectedTransportations}" styleClass="full-width">
+    					<f:selectItems value="#{packageManager.transportations}" var="t" itemValue="#{t.id}" itemLabel="#{t.name} (#{t.price} euro)"/>
+					</p:selectManyMenu>			
+					</td>
+					<td><br/>
+					Mezzi di trasporto predefiniti<br/>(un mezzo di andata e uno di ritorno)<br/><br/>
+					<p:selectManyMenu id="selectedDefaultTransportations" value="#{packageManager.selectedDefaultTransportations}" styleClass="full-width">
+    					<f:selectItems value="#{packageManager.transportations}" var="t" itemValue="#{t.id}" itemLabel="#{t.name} (#{t.price} euro)"/>
+					</p:selectManyMenu>	
+					</td>				
+				</tr>
+				<tr>
+					<td><br/>
+					Alloggi (opzioni)<br/><br/>
+					<p:selectManyMenu id="selectedAccommodations" value="#{packageManager.selectedAccommodations}" styleClass="full-width">
+    					<f:selectItems value="#{packageManager.accommodations}" var="t" itemValue="#{t.id}" itemLabel="#{t.name} (#{t.price} euro)"/>
+					</p:selectManyMenu>
+					</td>
+					<td><br/>
+					Alloggio predefinito <br/><br/>
+					<p:selectOneMenu id="selectedDefaultAccommodation" value="#{packageManager.selectedDefaultAccommodationString}" >
+    					<f:selectItems value="#{packageManager.accommodations}" var="t" itemValue="#{t.id}" itemLabel="#{t.name}"/>
+					</p:selectOneMenu>
+					</td>
+				</tr>
+				<tr>
+					<td><br/>
+					Escursioni (opzioni)<br/><br/>
+					<p:selectManyMenu id="selectedTrips" value="#{packageManager.selectedTrips}" styleClass="full-width">
+    					<f:selectItems value="#{packageManager.trips}" var="t" itemValue="#{t.id}" itemLabel="#{t.name} (#{t.price} euro)"/>
+					</p:selectManyMenu>
+					</td>
+					<td><br/>
+					Escursioni predefinite<br/><br/>
+					<p:selectManyMenu id="selectedDefaultTrips" value="#{packageManager.selectedDefaultTrips}" styleClass="full-width">
+    					<f:selectItems value="#{packageManager.trips}" var="t" itemValue="#{t.id}" itemLabel="#{t.name}"/>
+					</p:selectManyMenu>
+					</td>
+				</tr>
+				</table>
+					<br/>
+					<hr id="titlehr"/><br/>
+					<p:commandButton action="#{packageManager.create()}" value="salva" />
+				
+				</h:form>
+				</div>
+			</div>
+			<br />
+		</div>		
+		<ui:include src="../webApp/footer.xhtml" />
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<title> Login </title>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+		<link href="./webApp/style.css" rel="stylesheet" type="text/css" > </link>
+		<f:facet name="last">
+        	<h:outputStylesheet library="css" name="style.css"/>
+    	</f:facet>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="/webApp/header.xhtml" />
+		<div id='bodyContainer'>
+			<br />
+			<br />
+			<center>
+				<div id='container'><span id='title'>AUTENTICAZIONE</span><br/>
+					Inserisci E-mail e password.
+				</div>
+			</center>
+				<br />
+				<br />
+				<h:form id="login">
+					<div id='sharedPackageResearchContainer' align='center'>
+						<h:panelGrid columns="2" id="regGrid">
+							<div>E-mail</div><p:inputText id="username" value="#{loginManager.username}" />
+							<div>Password</div><p:password id="password" value="#{loginManager.password}"/>
+						</h:panelGrid>
+						<br />
+						<h:commandButton value="Login" action="#{loginManager.login()}" />
+					</div>
+				</h:form>
+				<br />
+		</div>		
+		<ui:include src="/webApp/footer.xhtml" />
+	</div>
+</h:body>
+</html>

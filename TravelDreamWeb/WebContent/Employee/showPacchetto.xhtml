@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+		<title> TravelDream - Show Pacchetto</title>
+		<link href="../webApp/style.css" rel="stylesheet" type="text/css" > </link>
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="../webApp/headerImpiegato.xhtml" />
+		<div id='bodyContainer'>
+			<br />
+			<div id='container'><span id='title'>(id: #{packageManager.idPackageTd}) - #{packageManager.name} - Questo pacchetto e' stato venduto vendite #{packageManager.getStat(packageManager.idPackageTd)} volte</span><hr id="titlehr"/><br/>
+				<table width="100%">
+				<tr>
+					<td><span id="field">Paese</span><br />#{packageManager.country}
+					</td>
+					<td><span id="field">Citta</span><br />#{packageManager.city}
+					</td>
+				</tr>
+				<tr>
+					<td><span id="field">Descrizione</span><br />#{packageManager.description}
+					</td>
+					<td><span id="field">Prezzo</span><br />#{packageManager.price}
+					</td>
+				</tr>
+				<tr>
+					<td><span id="field">Pacchetto</span><br />#{packageManager.explicitOnOffer}
+					</td>
+					<td><span id="field">Stato</span><br />#{packageManager.explicitStatus}
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><span id="field">Transportation means associati</span><br />
+					<h:dataTable value="#{packageManager.selectedTransportationsDTO}" var="t" class='employeeTable'>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet>    				
+					      <span id="field">id</span> #{t.id}
+					   </h:column>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet>    				
+					      #{t.name}
+					   </h:column>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet>    				
+					      #{t.price} <span id="field">euro</span>
+					   </h:column>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet>  <span id="field">partenza </span>   				
+					     <h:outputText value="#{t.departureDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy hh:mm"/>
+							</h:outputText>
+					   </h:column>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet><span id="field">arrivo </span>     				
+					     <h:outputText value="#{t.arrivalDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy hh:mm"/>
+							</h:outputText>
+					   </h:column>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet>    				
+					      #{t.notes}
+					   </h:column>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet>    				
+					      #{t.explicitStatus}
+					   </h:column>
+					   
+					</h:dataTable>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><span id="field">Accommodation associate</span><br />
+						<h:dataTable value="#{packageManager.selectedAccommodationsDTO}" var="a" class='employeeTable'>
+										   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				     <span id="field">Id </span> #{a.id}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.name}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.price} <span id="field">euro</span>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+					     <span id="field">dal </span> <h:outputText value="#{a.checkInDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+							</h:outputText>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet><span id="field">al </span>    				
+				      					      <h:outputText value="#{a.checkOutDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+							</h:outputText>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.rating} stelle
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.address}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.explicitStatus}
+				   </h:column>
+				</h:dataTable>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><span id="field">Trips associate</span><br />
+					<h:dataTable value="#{packageManager.selectedTripsDTO}" var="trip" class='employeeTable'>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      <span id="field">Id </span>#{trip.id}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.name}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.price} euro
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+					      <h:outputText value="#{trip.tripDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy hh:mm"/>
+							</h:outputText>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.description} 
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.explicitStatus}
+				   </h:column>
+				</h:dataTable>
+					
+					</td>
+				</tr>
+				</table>
+				<hr id="titlehr"/>
+				<h:form>
+				      <h:commandButton action="#{packageManager.editPackage(packageManager.idPackageTd)}" value="modifica"/>
+			   </h:form>
+			 
+			</div> 
+			<br />
+			<div id='container'><span id='title'>Prodotti base preimpostati</span><hr id="titlehr"/><br/>
+			<table width="100%">
+								<tr>
+					<td ><span id="field">Transportation means di default</span><br />
+					<h:dataTable value="#{packageManager.defaultTransportation}" var="t" class='employeeTable'>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet>    				
+					      #{t.name}
+					   </h:column>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet>    				
+					      #{t.price} <span id="field">euro</span>
+					   </h:column>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet>  <span id="field">partenza </span>   				
+					     <h:outputText value="#{t.departureDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy hh:mm"/>
+							</h:outputText>
+					   </h:column>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet><span id="field">arrivo </span>     				
+					     <h:outputText value="#{t.arrivalDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy hh:mm"/>
+							</h:outputText>
+					   </h:column>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet>    				
+					      #{t.notes}
+					   </h:column>
+					   <h:column >    				
+					      <f:facet name="header"></f:facet>    				
+					      #{t.explicitStatus}
+					   </h:column>
+					   
+					</h:dataTable>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><span id="field">Accommodation di default</span><br />
+						<h:dataTable value="#{packageManager.defaultAccommodation}" var="a" class='employeeTable'>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.name}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.price} euro
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+					     <span id="field">dal </span> <h:outputText value="#{a.checkInDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+							</h:outputText>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet><span id="field">al </span>    				
+				      					      <h:outputText value="#{a.checkOutDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+							</h:outputText>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.rating} stelle
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.address}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{a.explicitStatus}
+				   </h:column>
+				</h:dataTable>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><span id="field">Trips di default</span><br />
+					<h:dataTable value="#{packageManager.defaultTrips}" var="trip" class='employeeTable'>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.name}
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.price} euro
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+					      <h:outputText value="#{trip.tripDate}">
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy hh:mm"/>
+							</h:outputText>
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.description} 
+				   </h:column>
+				   <h:column>    				
+				      <f:facet name="header"></f:facet>    				
+				      #{trip.explicitStatus}
+				   </h:column>
+				</h:dataTable>
+					
+					</td>
+				</tr>
+				</table>
+			</div>
+			<br />
+		</div>		
+		<ui:include src="../webApp/footer.xhtml" />
+	</div>
+
+</h:body>
+</html>
